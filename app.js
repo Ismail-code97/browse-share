@@ -5,6 +5,12 @@ const path = require("path");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 
+let port = 3000;
+
+if (process.env.PORT) {
+  port = process.env.PORT;
+}
+
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
@@ -43,4 +49,4 @@ app.post("/share", function (req, res) {
   res.redirect("/confirm");
 });
 
-app.listen(3000);
+app.listen(port);
